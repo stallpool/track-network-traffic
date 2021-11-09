@@ -47,6 +47,7 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 
 ### report.json sample
 
+(track `curl https://www.google.com`)
 ```
 {
    "items": [
@@ -55,6 +56,34 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
          "host": "www.google.com",
          "path": [
             "/ HTTP/2.0"
+         ],
+         "protocol": "https"
+      }
+   ]
+}
+```
+
+(track `pip install pg8000`)
+```
+{
+   "items": [
+      {
+         "content": "binary",
+         "host": "pypi.org",
+         "path": [
+            "/simple/pg8000/",
+            "/simple/scramp/",
+            "/simple/asn1crypto/"
+         ],
+         "protocol": "https"
+      },
+      {
+         "content": "binary",
+         "host": "files.pythonhosted.org",
+         "path": [
+            "/packages/0d/b9/0f8e90f4d3785c517b15e1643d58fd484e2b594559d1af37e19217a74817/pg8000-1.22.0-py3-none-any.whl",
+            "/packages/27/31/80bfb02ba2daa9a0ca66f82650c411f1a2b21ce85164408f57e99aab4e4e/scramp-1.4.1-py3-none-any.whl",
+            "/packages/b5/a8/56be92dcd4a5bf1998705a9b4028249fe7c9a035b955fe93b6a3e5b829f8/asn1crypto-1.4.0-py2.py3-none-any.whl"
          ],
          "protocol": "https"
       }
