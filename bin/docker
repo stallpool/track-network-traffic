@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ROOT_DIR=$(cd `dirname $0`; pwd)
+PYTHON3=`which python3 || echo ${ROOT_DIR}/python3` \
+
+if [ -z ${TNT_DOCKER} ]; then
+   TNT_DOCKER=`which docker`
+fi
+if [ -z ${TNT_DOCKER} ]; then
+   echo 'Error: Cannot locate original docker binary.'
+   echo '       Use environment variable TNT_DOCKER to specify one.'
+   exit 1
+elif [ ${TNT_DOCKER} -ef ${ROOT_DIR}/docker ]; then
+   echo 'Error: Current `docker` is linked to this wrapper program itself.'
+   echo '       Use environment variable TNT_DOCKER to specify real docker.'
+   exit 1
+fi
+
+SUBCMD=$1
+
+if [ "x$SUBCMD" == "xbuild" ]; then
+   shift
+   export TNT_DOCKER
+   ${PYTHON3} ${ROOT_DIR}/docker_build.py $@
+else
+   ${TNT_DOCKER} $@
+fi
+
