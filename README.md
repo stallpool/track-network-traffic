@@ -30,6 +30,8 @@ docker run --name build --rm -d \
 ### docker build example
 
 ```
+# (build template.tar.gz, where the python3 can run on target container)
+# bash build_lin.sh (to get ./publish/tnt-lin.tar.gz)
 export OUTPUT_DIR=.
 export TNT_DOCKER_GATEWAY=`ifconfig docker0 | grep -o -E 'inet 172[0-9.]+' | cut -d ' ' -f 2`
 export TNT_DOCKER=`which docker`
