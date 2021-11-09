@@ -64,12 +64,11 @@ def get_docker_bridge_gateway_ip():
 def prepare_pre_config(docker_context):
    base_dir = os.path.join(SELF_DIR, 'runtime', 'tnt')
    target_tar = os.path.join(SELF_DIR, '..', 'publish', 'tnt-lin.tar.gz')
+   target_dir = os.path.join(base_dir, 'lin')
    # TODO: use pure python code to support multiple platforms
-   if not os.path.isfile(target_tar):
-      target_dir = os.path.join(base_dir, 'lin')
+   if not os.path.isfile(target_dir):
       cmdp = subprocess.Popen(['mkdir', '-p', target_dir])
       cmdp.wait()
-      # TODO: use shutil.unpack_archive, (3rd)tarfile, etc
       cmdp = subprocess.Popen(['tar', 'zxf', target_tar, '-C', target_dir])
       cmdp.wait()
    # TODO: deal with context path is a package instead of a folder
