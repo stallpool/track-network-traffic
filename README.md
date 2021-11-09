@@ -23,8 +23,8 @@ bash ./bin/tnt.bash -o . -- npm install uuid
 ```
 docker run --name build --rm -d \
    -v /tmp/output:/opt/output \
-   observer:latest \
-   bash /opt/observer/bin/tnt.bash -o /opt/output -- go get github.com/gogs/gogs"
+   tnt:latest \
+   bash /opt/tnt/bin/tnt.bash -o /opt/output -- go get github.com/gogs/gogs"
 ```
 
 ### docker build example
@@ -67,15 +67,15 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 # all on a Linux machine
 
 # tnt-lin.tar.gz
-echo observer for Linux version lin-`cat ./bin/version/lin`
+echo tnt for Linux version lin-`cat ./bin/version/lin`
 bash ./build_lin.sh
 
 # tnt-mac.tar.gz
-echo observer for MacOS version mac-`cat ./bin/version/mac`
+echo tnt for MacOS version mac-`cat ./bin/version/mac`
 bash ./build_mac.sh
 
 # tnt-win.zip
-echo observer for Windows version win-`cat ./bin/version/win`
+echo tnt for Windows version win-`cat ./bin/version/win`
 bash ./build_win.sh
 ```
 
