@@ -21,6 +21,7 @@ bash ./bin/tnt.bash -o . -- npm install uuid
 ### docker example
 
 ```
+# docker build -t tnt:latest . (build tnt image first)
 docker run --name build --rm -d \
    -v /tmp/output:/opt/output \
    tnt:latest \
@@ -95,7 +96,7 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 ## Build `tnt` package
 
 ```
-# all on a Linux machine
+# all on a Linux machine; require template ready
 
 # tnt-lin.tar.gz
 echo tnt for Linux version lin-`cat ./bin/version/lin`
@@ -178,7 +179,8 @@ ADD Setup.dist Python-3.6.13/Modules/
 RUN cd Python-3.6.13 \
     && ./configure --prefix=`pwd`/dist \
     && make && make install \
-    && cd dist/bin \
+(download setuptools and pip from pypi.python.org, extract packages and do ./python3 setup.py install)
+RUN cd Python-3.6.13/dist/bin \
     && ./python3 -m pip install mitmproxy
     && cd ../../..
     && ./Python-3.6.13/dist/bin/mitmdump --help
