@@ -44,6 +44,10 @@ RUN curl -L https://www.google.com
 EOF
 
 docker build --no-cache -t test:test -f /tmp/Dockerfile .
+
+# (experimental)
+# if would like to have a clean image without certificate injection layers
+python3 ./bin/docker_image_cleanup.py <image>
 ```
 
 ### report.json sample
