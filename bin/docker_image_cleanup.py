@@ -137,6 +137,8 @@ def main():
    cmdp = subprocess.Popen([DOCKER, 'rmi', image_namid])
    cmdp.wait()
    print('applying new image ...')
+   # TODO: `docker load` will combine layers together into one layer
+   #       use `docker image history` to compare after and before cleanup
    cmdp = subprocess.Popen([DOCKER, 'load', '-i', image_cleanup_tar])
    cmdp.wait()
    cmdp = subprocess.Popen(['rm', '-r', base_dir])

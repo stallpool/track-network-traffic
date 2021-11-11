@@ -47,7 +47,7 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 
 # (experimental)
 # if would like to have a clean image without certificate injection layers
-python3 ./bin/docker_image_cleanup.py <image>
+python3 ./bin/docker_image_cleanup.py test:test
 ```
 
 ### report.json sample
