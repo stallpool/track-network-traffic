@@ -53,7 +53,6 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 {
    "items": [
       {
-         "content": "binary",
          "host": "www.google.com",
          "path": [
             "/ HTTP/2.0"
@@ -69,7 +68,6 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
 {
    "items": [
       {
-         "content": "binary",
          "host": "pypi.org",
          "path": [
             "/simple/pg8000/",
@@ -79,7 +77,6 @@ docker build --no-cache -t test:test -f /tmp/Dockerfile .
          "protocol": "https"
       },
       {
-         "content": "binary",
          "host": "files.pythonhosted.org",
          "path": [
             "/packages/0d/b9/0f8e90f4d3785c517b15e1643d58fd484e2b594559d1af37e19217a74817/pg8000-1.22.0-py3-none-any.whl",

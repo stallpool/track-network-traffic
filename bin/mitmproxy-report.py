@@ -61,7 +61,6 @@ try:
          obj = itemmap[protocolHost]
       else:
          obj = {
-            "content": "binary",
             "host": host,
             "protocol": protocol,
             "path": []

@@ -6,7 +6,7 @@ import os
 import os.path
 
 IP_REGEX = re.compile(r'^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$')
-PROXYPORT="3128"
+PROXYPORT = os.getenv("TNT_PORT", "3128")
 
 filename = sys.argv[1]
 outdir = sys.argv[2]

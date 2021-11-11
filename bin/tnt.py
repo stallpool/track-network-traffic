@@ -284,6 +284,8 @@ def main():
       httpry_access_log_path = os.path.join(OUTPUT_DIR, "httpry.access.log")
       if (not ENABLE_APPEND_MODE) and os.path.isfile(httpry_access_log_path):
          os.remove(httpry_access_log_path)
+      tcpdump_report_env = dict(os.environ)
+      tcpdump_report_env["TNT_PORT"] = OB_PORT
       p = subprocess.Popen(
          "{0} {1} {2} {3}".format(
             PYTHON3,
@@ -291,7 +293,8 @@ def main():
             os.path.join(LOG_DIR, "httpry_access.log"),
             OUTPUT_DIR
          ),
-         shell=True
+         shell=True,
+         env=tcpdump_report_env
       )
       p.wait()
 
