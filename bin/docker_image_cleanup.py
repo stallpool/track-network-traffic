@@ -132,12 +132,14 @@ def main():
    )
    cmdp.wait()
 
+   print('backing up original image as {0}-tnt-bak ...'.format(image_namid))
+   cmdp = subprocess.Popen([DOCKER, 'tag', image_namid, '{0}-tnt-bak'.format(image_namid)])
+   cmdp.wait()
    print('removing original image ...')
-   # TODO: backup first: docker tag -t <image>.bak image_namid
    cmdp = subprocess.Popen([DOCKER, 'rmi', image_namid])
    cmdp.wait()
    print('applying new image ...')
-   # TODO: `docker load` will combine layers together into one layer
+   # TODO: `docker load` will squash layers into one
    #       use `docker image history` to compare after and before cleanup
    cmdp = subprocess.Popen([DOCKER, 'load', '-i', image_cleanup_tar])
    cmdp.wait()
